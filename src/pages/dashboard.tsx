@@ -18,6 +18,7 @@ const options ={
     },
     foreColor: theme.colors.gray[500],
   },
+  colors: [theme.colors.pink[500]],
   grid:{
     show: false,
   },
@@ -27,6 +28,7 @@ const options ={
   tooltip:{
     enabled:false,
   },
+ 
   xaxis:{
     type: "datetime",
     axisBorder:{
