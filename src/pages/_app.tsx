@@ -5,6 +5,7 @@ import { theme } from "../styles/theme";
 import { SidebarDrawerProvider } from "../context/SidebarDrawerContext";
 import { makeServer } from "../services/mirage";
 
+//verificando se estou em modo de  desenvolvimento//
 if(process.env.NODE_ENV === "development"){
   makeServer();
 }
