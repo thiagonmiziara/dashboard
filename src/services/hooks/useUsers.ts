@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, UseQueryOptions } from "react-query";
 import { api } from "../api";
 
 type User ={
@@ -41,8 +41,17 @@ export async function getUsers(page:number): Promise<GetUsersResponse> {
   } 
 }
 
-export function useUsers(page: number) {
+export function useUsers(page: number,) {
   return useQuery(["users",page], () => getUsers(page), {
     staleTime: 1000 * 60 * 10, //10minutes
+    
   });
 }
+
+//o codigo acima tem que ficar como este quando for integrar o ssr 
+// export function useUsers(page: number, options: UseQueryOptions) {
+//   return useQuery(["users",page], () => getUsers(page), {
+//     staleTime: 1000 * 60 * 10, //10minutes
+//     ...options,
+//   });
+// }

@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import { useState } from "react";
+
 import {
   Box,
   Button,
@@ -23,13 +24,18 @@ import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
-import { useUsers } from "../../services/hooks/useUsers";
+import { getUsers, useUsers } from "../../services/hooks/useUsers";
 import { queryClient } from "../../services/queryClient";
 import { api } from "../../services/api";
+import { GetServerSideProps } from "next";
+
 
 export default function UserList() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useUsers(page);
+  const { data, isLoading, isFetching, error } = useUsers(page)
+  // ,{
+  //   initialData: users,
+  // });
 
   console.log(data);
 
@@ -138,3 +144,16 @@ export default function UserList() {
     </Box>
   );
 }
+
+//exemplo de ssr integrado ao reactqueru mais nao vai funcionar pq o mirage nao suporta ssr
+// export const getServerSideProps : GetServerSideProps = async () =>{
+
+//   const {users, totalCount} = await getUsers(1);
+
+//   return{
+//     props:{
+//       users,
+//       totalCount,
+//     }
+//   }
+// }
